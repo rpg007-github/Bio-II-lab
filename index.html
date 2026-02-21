@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biology II Lab – Essential Study Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --accent: #0d9488;
+  --accent-light: #ccfbf1;
+  --accent-dark: #065f56;
+  --accent-glow: rgba(13, 148, 136, 0.15);
+  --bg: #f8faf9;
+  --card-bg: #ffffff;
+  --text: #1a2e28;
+  --text-muted: #5a7a70;
+  --border: #d1e5df;
+  --heading-font: 'Crimson Pro', Georgia, serif;
+  --body-font: 'Source Sans 3', 'Segoe UI', sans-serif;
+  --mono-font: 'JetBrains Mono', 'Courier New', monospace;
+  --radius: 10px;
+  --shadow: 0 2px 12px rgba(13, 148, 136, 0.08);
+  --shadow-hover: 0 6px 24px rgba(13, 148, 136, 0.15);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--body-font); background: var(--bg); color: var(--text); line-height: 1.7; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* HEADER */
+.hero {
+  background: linear-gradient(135deg, #065f56 0%, #0d9488 50%, #14b8a6 100%);
+  color: #fff;
+  padding: 3.5rem 2rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero h1 { font-family: var(--heading-font); font-size: 2.6rem; font-weight: 700; margin-bottom: 0.5rem; position: relative; }
+.hero .subtitle { font-size: 1.15rem; opacity: 0.9; position: relative; font-weight: 400; }
+
+/* TOC */
+.toc {
+  max-width: 900px;
+  margin: -1.5rem auto 2rem;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.8rem 2rem;
+  position: relative;
+  z-index: 2;
+}
+.toc h2 { font-family: var(--heading-font); font-size: 1.3rem; color: var(--accent-dark); margin-bottom: 1rem; }
+.toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.4rem 1.5rem; }
+.toc-grid a {
+  display: block;
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.92rem;
+  color: var(--text);
+  transition: background 0.2s, color 0.2s;
+}
+.toc-grid a:hover { background: var(--accent-light); color: var(--accent-dark); text-decoration: none; }
+.toc-grid a .toc-num { color: var(--accent); font-weight: 700; margin-right: 0.4rem; font-family: var(--mono-font); font-size: 0.82rem; }
+
+/* SECTIONS */
+.content { max-width: 900px; margin: 0 auto; padding: 0 1.5rem 3rem; }
+.section {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem 2.2rem;
+  margin-bottom: 1.8rem;
+  transition: box-shadow 0.3s;
+}
+.section:hover { box-shadow: var(--shadow-hover); }
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.3rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid var(--accent-light);
+}
+.section-number {
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--mono-font);
+  font-weight: 700;
+  font-size: 0.85rem;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.section-header h2 { font-family: var(--heading-font); font-size: 1.5rem; color: var(--accent-dark); }
+.section p { margin-bottom: 1rem; }
+
+/* TABLES */
+.fact-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.93rem; }
+.fact-table th {
+  background: var(--accent);
+  color: #fff;
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.fact-table td { padding: 0.55rem 0.8rem; border-bottom: 1px solid var(--border); }
+.fact-table tr:hover td { background: var(--accent-glow); }
+.fact-table th:first-child { border-radius: 6px 0 0 0; }
+.fact-table th:last-child { border-radius: 0 6px 0 0; }
+
+/* CALLOUT BOXES */
+.callout {
+  background: var(--accent-light);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1rem 1.3rem;
+  margin: 1rem 0;
+  font-size: 0.93rem;
+}
+.callout-title { font-weight: 700; color: var(--accent-dark); margin-bottom: 0.3rem; }
+.mnemonic {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  border-left: 4px solid #f59e0b;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1rem 1.3rem;
+  margin: 1rem 0;
+  font-size: 0.93rem;
+}
+.mnemonic-title { font-weight: 700; color: #92400e; margin-bottom: 0.3rem; }
+.constant { font-family: var(--mono-font); color: var(--accent-dark); font-weight: 600; background: var(--accent-light); padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+
+/* STYLED LIST */
+.styled-list { list-style: none; padding: 0; }
+.styled-list li {
+  padding: 0.45rem 0 0.45rem 1.6rem;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+}
+.styled-list li:last-child { border-bottom: none; }
+.styled-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0.3rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* TWO-COLUMN GRID */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1rem 0; }
+@media (max-width: 650px) { .two-col { grid-template-columns: 1fr; } }
+
+/* QUIZ */
+.quiz-q { margin-bottom: 1.5rem; padding: 1.2rem; background: var(--bg); border-radius: var(--radius); }
+.quiz-q p { font-weight: 600; margin-bottom: 0.6rem; }
+.quiz-q label { display: block; padding: 0.4rem 0.6rem; border-radius: 6px; cursor: pointer; font-size: 0.93rem; transition: background 0.15s; }
+.quiz-q label:hover { background: var(--accent-light); }
+.quiz-q input[type="radio"] { margin-right: 0.5rem; accent-color: var(--accent); }
+.quiz-feedback { margin-top: 0.5rem; padding: 0.6rem 0.8rem; border-radius: 6px; font-size: 0.9rem; display: none; }
+.quiz-feedback.correct { background: #dcfce7; color: #166534; }
+.quiz-feedback.incorrect { background: #fee2e2; color: #991b1b; }
+.quiz-controls { text-align: center; margin: 1.5rem 0; display: flex; gap: 1rem; justify-content: center; }
+.quiz-btn {
+  padding: 0.7rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--body-font);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.2s;
+}
+.quiz-btn:hover { transform: translateY(-1px); }
+.quiz-btn-primary { background: var(--accent); color: #fff; box-shadow: 0 2px 8px rgba(13,148,136,0.3); }
+.quiz-btn-secondary { background: var(--border); color: var(--text); }
+.quiz-score { text-align: center; margin: 1rem 0; }
+.score-number { font-family: var(--heading-font); font-size: 2.5rem; font-weight: 700; color: var(--accent); }
+.score-label { color: var(--text-muted); font-size: 0.95rem; }
+
+/* FLASHCARDS */
+.fc-category-filter { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.2rem; }
+.fc-filter-btn {
+  padding: 0.35rem 0.9rem;
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  background: #fff;
+  font-family: var(--body-font);
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 600;
+}
+.fc-filter-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.fc-filter-btn:hover { border-color: var(--accent); }
+.flashcard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+.fc-card { perspective: 800px; height: 170px; cursor: pointer; }
+.fc-card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+.fc-card.flipped .fc-card-inner { transform: rotateY(180deg); }
+.fc-card-front, .fc-card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+.fc-card-front { background: var(--card-bg); border: 2px solid var(--border); color: var(--text); font-weight: 600; }
+.fc-card-back { background: var(--accent); color: #fff; transform: rotateY(180deg); }
+.fc-card-front .fc-cat { position: absolute; top: 0.5rem; right: 0.6rem; font-size: 0.68rem; color: var(--text-muted); font-weight: 400; }
+
+/* SHORT ANSWER */
+.sa-question { margin-bottom: 1.8rem; padding: 1.2rem; background: var(--bg); border-radius: var(--radius); }
+.sa-question p { font-weight: 600; margin-bottom: 0.7rem; }
+.sa-question textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 0.7rem;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--body-font);
+  font-size: 0.93rem;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+.sa-question textarea:focus { outline: none; border-color: var(--accent); }
+.sa-grade-btn {
+  margin-top: 0.6rem;
+  padding: 0.5rem 1.3rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-family: var(--body-font);
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.88rem;
+}
+.sa-result { margin-top: 0.8rem; display: none; }
+.sa-bar { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; margin: 0.5rem 0; }
+.sa-bar-fill { height: 100%; border-radius: 4px; transition: width 0.5s; }
+.sa-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.5rem 0; }
+.sa-tag { padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.78rem; font-weight: 600; }
+.sa-tag.hit { background: #dcfce7; color: #166534; }
+.sa-tag.miss { background: #f3f4f6; color: #9ca3af; }
+.sa-model { margin-top: 0.7rem; padding: 0.8rem; background: var(--accent-light); border-radius: 8px; font-size: 0.88rem; display: none; }
+.sa-model-toggle { color: var(--accent); cursor: pointer; font-size: 0.85rem; font-weight: 600; }
+.sa-note { color: var(--text-muted); font-size: 0.85rem; margin-top: 1rem; font-style: italic; }
+
+/* RESPONSIVE */
+@media (max-width: 650px) {
+  .hero h1 { font-size: 1.8rem; }
+  .section { padding: 1.4rem 1.2rem; }
+  .toc { padding: 1.2rem; }
+  .toc-grid { grid-template-columns: 1fr; }
+  .flashcard-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Biology II Lab</h1>
+  <div class="subtitle">Essential Knowledge Reference – Spring 2026</div>
+</div>
+
+<div class="toc">
+  <h2>Table of Contents</h2>
+  <div class="toc-grid">
+    <a href="#s1"><span class="toc-num">01</span> Lab Safety &amp; iNaturalist</a>
+    <a href="#s2"><span class="toc-num">02</span> Prokaryotes</a>
+    <a href="#s3"><span class="toc-num">03</span> Protists</a>
+    <a href="#s4"><span class="toc-num">04</span> Seedless Plants</a>
+    <a href="#s5"><span class="toc-num">05</span> Seed Plants</a>
+    <a href="#s6"><span class="toc-num">06</span> Fungi &amp; Metazoa</a>
+    <a href="#s7"><span class="toc-num">07</span> Lophotrochozoa</a>
+    <a href="#s8"><span class="toc-num">08</span> Ecdysozoa</a>
+    <a href="#s9"><span class="toc-num">09</span> Deuterostomes: Echinoderms</a>
+    <a href="#s10"><span class="toc-num">10</span> Deuterostomes: Chordates</a>
+    <a href="#s11"><span class="toc-num">11</span> Ecology</a>
+    <a href="#s12"><span class="toc-num">12</span> Key Comparisons &amp; Constants</a>
+    <a href="#s13"><span class="toc-num">13</span> Self-Test Quiz</a>
+    <a href="#s14"><span class="toc-num">14</span> Flashcards</a>
+    <a href="#s15"><span class="toc-num">15</span> Short Answer Practice</a>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- SECTION 1: Lab Safety & iNaturalist -->
+  <div class="section" id="s1">
+    <div class="section-header"><span class="section-number">1</span><h2>Lab Safety &amp; iNaturalist</h2></div>
+    <p>Biology II Lab begins with foundational lab safety protocols and an introduction to iNaturalist, a citizen science platform used throughout the semester to document and identify organisms in their natural habitats. Observations made in iNaturalist become part of a global biodiversity database and help students develop field identification skills.</p>
+    <div class="callout">
+      <div class="callout-title">iNaturalist Essentials</div>
+      <p>Each observation needs a photo, date, and location. The app uses AI-assisted identification suggestions, but community verification brings observations to "Research Grade" status (requires photo + location + date + 2/3 community agreement on ID). Your observations contribute to real biodiversity research through the Global Biodiversity Information Facility (GBIF).</p>
+    </div>
+    <table class="fact-table">
+      <tr><th>Safety Principle</th><th>Key Details</th></tr>
+      <tr><td>Specimen handling</td><td>Always wear gloves when handling preserved specimens; many are fixed in formalin or stored in ethanol</td></tr>
+      <tr><td>Dissection tools</td><td>Cut away from your body; scalpels and razor blades go in sharps containers, never in regular trash</td></tr>
+      <tr><td>Microscope care</td><td>Carry with both hands (arm and base); start at lowest magnification; clean lenses with lens paper only</td></tr>
+      <tr><td>Chemical disposal</td><td>Never pour chemicals down the drain unless instructed; use designated waste containers</td></tr>
+      <tr><td>Broken glass</td><td>Use a broom and dustpan, never bare hands; dispose in designated glass waste containers</td></tr>
+    </table>
+    <div class="callout">
+      <div class="callout-title">Florida &amp; Labster Biodiversity</div>
+      <p>Early labs use Labster virtual simulations alongside field observations to explore Florida's remarkable biodiversity. Northwest Florida features coastal dune ecosystems, longleaf pine savannas, seagrass beds, and freshwater bayous, each supporting distinct communities of prokaryotes, protists, fungi, plants, and animals studied throughout the semester.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 2: Prokaryotes -->
+  <div class="section" id="s2">
+    <div class="section-header"><span class="section-number">2</span><h2>Prokaryotes</h2></div>
+    <p>Prokaryotes are the most ancient, abundant, and metabolically diverse organisms on Earth. They lack membrane-bound nuclei and organelles but possess remarkable adaptations for survival in virtually every environment. The two domains of prokaryotic life, Bacteria and Archaea, are as genetically different from each other as either is from Eukarya.</p>
+    <table class="fact-table">
+      <tr><th>Feature</th><th>Bacteria</th><th>Archaea</th></tr>
+      <tr><td>Cell wall</td><td>Peptidoglycan</td><td>Pseudopeptidoglycan or protein; no peptidoglycan</td></tr>
+      <tr><td>Membrane lipids</td><td>Ester-linked fatty acids</td><td>Ether-linked branched hydrocarbons</td></tr>
+      <tr><td>RNA polymerase</td><td>One type (simple)</td><td>Multiple types (complex, eukaryote-like)</td></tr>
+      <tr><td>Extreme environments</td><td>Some extremophiles</td><td>Many extremophiles (halophiles, thermophiles, methanogens)</td></tr>
+      <tr><td>Histones</td><td>Absent</td><td>Present (some species)</td></tr>
+    </table>
+    <div class="callout">
+      <div class="callout-title">Gram Staining</div>
+      <p>Gram-positive bacteria have a thick peptidoglycan layer that retains the crystal violet stain (appearing purple). Gram-negative bacteria have a thin peptidoglycan layer surrounded by an outer membrane, so the crystal violet washes away and they take up the safranin counterstain (appearing pink/red). The outer membrane of gram-negative bacteria contains lipopolysaccharide (LPS), which can trigger strong immune responses.</p>
+    </div>
+    <table class="fact-table">
+      <tr><th>Cell Shape</th><th>Name</th><th>Example</th></tr>
+      <tr><td>Spherical</td><td>Coccus (pl. cocci)</td><td><span class="constant">Staphylococcus</span>, <span class="constant">Streptococcus</span></td></tr>
+      <tr><td>Rod-shaped</td><td>Bacillus (pl. bacilli)</td><td><span class="constant">E. coli</span>, <span class="constant">Bacillus subtilis</span></td></tr>
+      <tr><td>Spiral</td><td>Spirillum / Spirochete</td><td><span class="constant">Treponema</span>, <span class="constant">Helicobacter</span></td></tr>
+      <tr><td>Comma-shaped</td><td>Vibrio</td><td><span class="constant">Vibrio cholerae</span></td></tr>
+    </table>
+    <div class="mnemonic">
+      <div class="mnemonic-title">Metabolic Diversity Mnemonic</div>
+      <p>"Photo" = light energy, "Chemo" = chemical energy, "Auto" = CO₂ as carbon source, "Hetero" = organic carbon source. Combine them: a <span class="constant">photoautotroph</span> uses light energy to fix CO₂ (cyanobacteria), a <span class="constant">chemoautotroph</span> uses inorganic chemical reactions to fix CO₂ (nitrifying bacteria), and a <span class="constant">chemoheterotroph</span> uses organic molecules for both energy and carbon (most bacteria you encounter).</p>
+    </div>
+    <p>Prokaryotic reproduction is primarily through binary fission, producing genetically identical daughter cells. Genetic diversity arises through three mechanisms of horizontal gene transfer: <span class="constant">transformation</span> (uptake of free DNA from the environment), <span class="constant">transduction</span> (transfer via bacteriophages), and <span class="constant">conjugation</span> (direct transfer through a pilus, often carrying plasmid DNA including antibiotic resistance genes).</p>
+  </div>
+
+  <!-- SECTION 3: Protists -->
+  <div class="section" id="s3">
+    <div class="section-header"><span class="section-number">3</span><h2>Protists</h2></div>
+    <p>Protists are a paraphyletic grab-bag of eukaryotic organisms that are not plants, animals, or fungi. They range from unicellular amoebas to giant multicellular kelps. Understanding protists means understanding the diversity of eukaryotic lineages and the endosymbiotic events that shaped them.</p>
+    <div class="callout">
+      <div class="callout-title">Endosymbiotic Theory</div>
+      <p>Mitochondria originated from an alpha-proteobacterium engulfed by an ancestral eukaryote (primary endosymbiosis). Chloroplasts originated from a cyanobacterium engulfed by a eukaryote. Both organelles retain their own circular DNA, have double membranes, replicate independently, and have ribosomes similar to bacteria. Secondary endosymbiosis (a eukaryote engulfing a photosynthetic eukaryote) produced groups like brown algae and euglenids, sometimes resulting in three or four membranes around the chloroplast.</p>
+    </div>
+    <table class="fact-table">
+      <tr><th>Supergroup</th><th>Key Members</th><th>Distinguishing Features</th></tr>
+      <tr><td>Excavata</td><td>Euglena, Giardia, Trypanosoma</td><td>Modified mitochondria or none; feeding groove; some photosynthetic (Euglena)</td></tr>
+      <tr><td>SAR (Stramenopila)</td><td>Diatoms, brown algae, water molds</td><td>Hairy and smooth flagella; diatoms have silica cell walls (frustules)</td></tr>
+      <tr><td>SAR (Alveolata)</td><td>Paramecium, Plasmodium, dinoflagellates</td><td>Membrane-bound sacs (alveoli) beneath cell surface</td></tr>
+      <tr><td>SAR (Rhizaria)</td><td>Foraminifera, radiolarians</td><td>Amoeboid movement; calcium carbonate or silica shells; pseudopods</td></tr>
+      <tr><td>Archaeplastida</td><td>Red algae, green algae</td><td>Primary endosymbiosis chloroplasts; cellulose cell walls; gave rise to land plants</td></tr>
+      <tr><td>Amoebozoa</td><td>Amoeba, slime molds</td><td>Lobe-shaped pseudopods (lobopods); includes plasmodial and cellular slime molds</td></tr>
+      <tr><td>Opisthokonta</td><td>Choanoflagellates</td><td>Collar cells with flagellum; closest protist relatives of animals and fungi</td></tr>
+    </table>
+    <div class="mnemonic">
+      <div class="mnemonic-title">Protist Movement Types</div>
+      <p><span class="constant">Pseudopods</span> = Amoeba (cytoplasmic extensions), <span class="constant">Cilia</span> = Paramecium (short, numerous, coordinated beating), <span class="constant">Flagella</span> = Euglena and Trypanosoma (long whip-like), <span class="constant">No movement</span> = Plasmodium (obligate intracellular parasite, relies on host).</p>
+    </div>
+    <p>In lab you will observe living and prepared protist specimens under the microscope, identifying key structures such as the contractile vacuole (osmoregulation) and food vacuoles (digestion) in Paramecium, the eyespot (phototaxis) and pellicle (flexible protein strips) in Euglena, and the test (shell) structures in foraminifera.</p>
+  </div>
+
+  <!-- SECTION 4: Seedless Plants -->
+  <div class="section" id="s4">
+    <div class="section-header"><span class="section-number">4</span><h2>Seedless Plants</h2></div>
+    <p>The move from water to land required critical adaptations. Seedless plants include the bryophytes (non-vascular) and the seedless vascular plants, representing two major steps in this evolutionary transition. All land plants share a defining feature: alternation of generations between a multicellular diploid sporophyte and a multicellular haploid gametophyte.</p>
+    <table class="fact-table">
+      <tr><th>Group</th><th>Vascular Tissue?</th><th>Dominant Generation</th><th>Examples</th></tr>
+      <tr><td>Bryophytes (mosses)</td><td>No</td><td>Gametophyte (the green "plant" you see)</td><td>Mosses, liverworts, hornworts</td></tr>
+      <tr><td>Lycophytes</td><td>Yes</td><td>Sporophyte</td><td>Club mosses (<span class="constant">Lycopodium</span>), spike mosses, quillworts</td></tr>
+      <tr><td>Monilophytes</td><td>Yes (ferns, horsetails, whisk ferns)</td><td>Sporophyte</td><td>Ferns, horsetails (<span class="constant">Equisetum</span>)</td></tr>
+    </table>
+    <div class="callout">
+      <div class="callout-title">Key Adaptations for Land</div>
+      <p>Cuticle (waxy coating preventing water loss), stomata (gas exchange pores), sporopollenin (tough spore walls), gametangia (protective structures around gametes: archegonia for eggs, antheridia for sperm), and in vascular plants, xylem (water transport, dead cells) and phloem (sugar transport, living cells).</p>
+    </div>
+    <div class="mnemonic">
+      <div class="mnemonic-title">Fern Life Cycle</div>
+      <p>The mature fern you see is the <span class="constant">sporophyte</span> (2n). On the underside of fronds, clusters of sporangia called <span class="constant">sori</span> produce spores by meiosis. Spores germinate into a tiny heart-shaped <span class="constant">prothallus</span> (the gametophyte, 1n), which produces eggs and swimming sperm. Fertilization requires water. The new sporophyte grows from the gametophyte and eventually becomes the dominant plant.</p>
+    </div>
+    <p>Seedless plants still require water for reproduction because their sperm are flagellated and must swim to the egg. This is why bryophytes and ferns are most abundant in moist habitats. In lab, look for sori on fern fronds, identify the heart-shaped fern gametophyte, and compare the tiny sporophyte of a moss (the stalk with a capsule growing from the leafy gametophyte).</p>
+  </div>
+
+  <!-- SECTION 5: Seed Plants -->
+  <div class="section" id="s5">
+    <div class="section-header"><span class="section-number">5</span><h2>Seed Plants</h2></div>
+    <p>Seeds and pollen were game-changing innovations that freed plants from dependence on water for reproduction. Seed plants include the gymnosperms (naked seeds) and angiosperms (seeds enclosed in fruits). Together they dominate terrestrial ecosystems.</p>
+    <table class="fact-table">
+      <tr><th>Feature</th><th>Gymnosperms</th><th>Angiosperms</th></tr>
+      <tr><td>Seeds</td><td>Exposed on cone scales ("naked")</td><td>Enclosed within a fruit (mature ovary)</td></tr>
+      <tr><td>Reproductive structures</td><td>Cones (strobili)</td><td>Flowers</td></tr>
+      <tr><td>Pollination</td><td>Mostly wind</td><td>Wind, insects, birds, bats, water</td></tr>
+      <tr><td>Vascular tissue</td><td>Tracheids only (no vessels)</td><td>Tracheids and vessel elements</td></tr>
+      <tr><td>Double fertilization</td><td>No</td><td>Yes (produces embryo + triploid endosperm)</td></tr>
+      <tr><td>Major groups</td><td>Conifers, cycads, ginkgo, gnetophytes</td><td>Monocots, eudicots, basal angiosperms</td></tr>
+    </table>
+    <div class="callout">
+      <div class="callout-title">Double Fertilization (Angiosperms Only)</div>
+      <p>One sperm fuses with the egg to form the <span class="constant">zygote</span> (2n). The other sperm fuses with the two polar nuclei to form the <span class="constant">endosperm</span> (3n), which nourishes the developing embryo. This is unique to angiosperms and ensures the plant invests nutrition only in fertilized ovules.</p>
+    </div>
+    <table class="fact-table">
+      <tr><th>Feature</th><th>Monocots</th><th>Eudicots</th></tr>
+      <tr><td>Cotyledons</td><td><span class="constant">1</span></td><td><span class="constant">2</span></td></tr>
+      <tr><td>Leaf venation</td><td>Parallel</td><td>Branching (net-like)</td></tr>
+      <tr><td>Flower parts</td><td>Multiples of <span class="constant">3</span></td><td>Multiples of <span class="constant">4 or 5</span></td></tr>
+      <tr><td>Vascular bundles in stem</td><td>Scattered</td><td>Ring arrangement</td></tr>
+      <tr><td>Root system</td><td>Fibrous</td><td>Taproot</td></tr>
+      <tr><td>Examples</td><td>Grasses, lilies, orchids, palms</td><td>Roses, oaks, sunflowers, beans</td></tr>
+    </table>
+    <p>In lab, you will examine pine cone structure (ovulate vs. pollen cones), dissect flowers to identify sepals, petals, stamens (anther + filament), and carpels (stigma, style, ovary), and compare monocot and eudicot anatomy in cross-sections of stems and leaves.</p>
+  </div>
+
+  <!-- SECTION 6: Fungi & Metazoa Intro -->
+  <div class="section" id="s6">
+    <div class="section-header"><span class="section-number">6</span><h2>Fungi &amp; Metazoa Introduction</h2></div>
+    <p>Fungi and animals are both opisthokonts, meaning they share a common ancestor characterized by a posterior flagellum on motile cells. Fungi are heterotrophic absorbers that decompose organic material externally and then absorb the nutrients. They are essential decomposers, plant symbionts, and occasionally pathogens.</p>
+    <table class="fact-table">
+      <tr><th>Fungal Feature</th><th>Details</th></tr>
+      <tr><td>Cell walls</td><td><span class="constant">Chitin</span> (same polymer as arthropod exoskeletons)</td></tr>
+      <tr><td>Body structure</td><td>Hyphae (filaments); network = mycelium; some are yeasts (unicellular)</td></tr>
+      <tr><td>Nutrition</td><td>Extracellular digestion via secreted enzymes, then absorption</td></tr>
+      <tr><td>Storage carbohydrate</td><td><span class="constant">Glycogen</span> (like animals, not starch like plants)</td></tr>
+      <tr><td>Reproduction</td><td>Sexual and asexual spores; many spend most of life as dikaryotic (n+n) cells</td></tr>
+    </table>
+    <table class="fact-table">
+      <tr><th>Phylum</th><th>Common Name</th><th>Key Feature</th><th>Example</th></tr>
+      <tr><td>Chytridiomycota</td><td>Chytrids</td><td>Flagellated spores (zoospores); aquatic</td><td><span class="constant">Batrachochytrium</span> (amphibian chytrid)</td></tr>
+      <tr><td>Zygomycota</td><td>Bread molds</td><td>Zygosporangium (resistant sexual structure)</td><td><span class="constant">Rhizopus</span> (black bread mold)</td></tr>
+      <tr><td>Ascomycota</td><td>Sac fungi</td><td>Ascus (sac producing 8 ascospores by meiosis)</td><td>Morels, truffles, <span class="constant">Penicillium</span>, yeasts</td></tr>
+      <tr><td>Basidiomycota</td><td>Club fungi</td><td>Basidium (club producing 4 basidiospores)</td><td>Mushrooms, puffballs, shelf fungi, rusts</td></tr>
+      <tr><td>Glomeromycota</td><td>AM fungi</td><td>Arbuscular mycorrhizae; obligate plant symbionts</td><td>Most plant roots (~90% of species)</td></tr>
+    </table>
+    <div class="callout">
+      <div class="callout-title">Symbiotic Relationships</div>
+      <p><span class="constant">Mycorrhizae</span> = fungus + plant roots (fungus provides minerals, especially phosphorus; plant provides sugars). <span class="constant">Lichens</span> = fungus + photosynthetic partner (green alga or cyanobacterium); the fungus provides structure and moisture retention, the photobiont provides carbohydrates. Lichens are sensitive to air pollution and serve as bioindicators.</p>
+    </div>
+    <p>The Metazoa (animals) are multicellular, heterotrophic ingestors that lack cell walls and (in most lineages) have specialized tissues organized by embryonic germ layers. All animals share a common ancestor that was likely a colonial choanoflagellate-like protist. Key animal synapomorphies include collagen-based extracellular matrix, true multicellularity with cell junctions (tight junctions, gap junctions, desmosomes), and nervous/muscle tissue in most lineages.</p>
+  </div>
+
+  <!-- SECTION 7: Lophotrochozoa -->
+  <div class="section" id="s7">
+    <div class="section-header"><span class="section-number">7</span><h2>Lophotrochozoa</h2></div>
+    <p>Lophotrochozoa is a major clade of protostome animals named for two features found in various members: the lophophore (a tentacle-bearing feeding structure) and the trochophore larva (a free-swimming larval stage). This clade includes an enormous diversity of body plans, from flatworms to octopuses.</p>
+    <table class="fact-table">
+      <tr><th>Phylum</th><th>Key Features</th><th>Body Cavity</th><th>Examples</th></tr>
+      <tr><td>Platyhelminthes (flatworms)</td><td>Dorso-ventrally flattened; gastrovascular cavity with one opening; no circulatory or respiratory system; cephalization</td><td>Acoelomate</td><td>Planaria, tapeworms, flukes</td></tr>
+      <tr><td>Rotifera</td><td>Crown of cilia (corona) for feeding; pseudocoelom; microscopic; complete digestive tract</td><td>Pseudocoelomate</td><td>Bdelloid rotifers</td></tr>
+      <tr><td>Mollusca</td><td>Muscular foot, visceral mass, mantle (secretes shell); open or closed circulatory system; radula in most</td><td>Coelomate</td><td>Snails, clams, squid, octopus</td></tr>
+      <tr><td>Annelida</td><td>Segmented bodies (metameres); closed circulatory system; hydrostatic skeleton; setae or parapodia</td><td>Coelomate</td><td>Earthworms, leeches, polychaetes</td></tr>
+    </table>
+    <div class="callout">
+      <div class="callout-title">Mollusc Classes to Know</div>
+      <p><span class="constant">Gastropoda</span> (snails, slugs): torsion of visceral mass, single shell or shell-less, radula for scraping. <span class="constant">Bivalvia</span> (clams, mussels, oysters): two hinged shells, filter feeders using gills, no head or radula. <span class="constant">Cephalopoda</span> (squid, octopus, nautilus): closed circulatory system, complex eyes, jet propulsion, highly intelligent; reduced or absent shell in most modern species.</p>
+    </div>
+    <div class="mnemonic">
+      <div class="mnemonic-title">Body Cavity Progression</div>
+      <p><span class="constant">Acoelomate</span> = no body cavity, solid mesoderm (flatworms). <span class="constant">Pseudocoelomate</span> = body cavity between mesoderm and endoderm, not fully lined by mesoderm (roundworms, rotifers). <span class="constant">Coelomate</span> = true body cavity completely lined by mesoderm-derived peritoneum (annelids, molluscs, arthropods, chordates).</p>
+    </div>
+    <p>In lab, you will dissect or examine earthworms (noting segmentation, clitellum, dorsal blood vessel, crop, gizzard, nephridia) and observe mollusc diversity through shells and preserved specimens. Dissections of bivalves reveal the mantle, gills, adductor muscles, and foot.</p>
+  </div>
+
+  <!-- SECTION 8: Ecdysozoa -->
+  <div class="section" id="s8">
+    <div class="section-header"><span class="section-number">8</span><h2>Ecdysozoa</h2></div>
+    <p>Ecdysozoans are protostome animals that grow by molting (ecdysis), shedding an external cuticle to allow the body to expand. This clade includes the two most species-rich animal phyla on Earth: Nematoda and Arthropoda.</p>
+    <table class="fact-table">
+      <tr><th>Phylum</th><th>Key Features</th><th>Examples</th></tr>
+      <tr><td>Nematoda (roundworms)</td><td>Unsegmented, round in cross-section; pseudocoelom; complete digestive tract; cuticle molted as they grow; many are parasitic</td><td><span class="constant">Ascaris</span>, <span class="constant">C. elegans</span>, hookworms, pinworms</td></tr>
+      <tr><td>Arthropoda</td><td>Jointed appendages; chitinous exoskeleton (molted); segmented body; open circulatory system (hemolymph); most diverse animal phylum</td><td>Insects, arachnids, crustaceans, myriapods</td></tr>
+    </table>
+    <table class="fact-table">
+      <tr><th>Arthropod Subphylum</th><th>Body Regions</th><th>Legs</th><th>Antennae</th><th>Examples</th></tr>
+      <tr><td>Chelicerata</td><td>Cephalothorax + abdomen</td><td><span class="constant">8</span> (4 pairs)</td><td>None (chelicerae instead)</td><td>Spiders, scorpions, ticks, horseshoe crabs</td></tr>
+      <tr><td>Myriapoda</td><td>Head + many identical segments</td><td>Many pairs</td><td>1 pair</td><td>Centipedes (1 pair/segment), millipedes (2 pairs/segment)</td></tr>
+      <tr><td>Crustacea</td><td>Cephalothorax + abdomen</td><td>Variable (5+ pairs)</td><td><span class="constant">2 pairs</span></td><td>Crabs, lobsters, barnacles, isopods</td></tr>
+      <tr><td>Hexapoda (Insecta)</td><td>Head + thorax + abdomen</td><td><span class="constant">6</span> (3 pairs, on thorax)</td><td>1 pair</td><td>Beetles, butterflies, ants, flies</td></tr>
+    </table>
+    <div class="callout">
+      <div class="callout-title">Insect Metamorphosis</div>
+      <p><span class="constant">Complete metamorphosis</span> (holometabolous): egg → larva → pupa → adult. The larval and adult stages are morphologically distinct and often exploit different resources (butterflies, beetles, flies, bees). <span class="constant">Incomplete metamorphosis</span> (hemimetabolous): egg → nymph → adult. Nymphs resemble small adults and gradually acquire adult features through successive molts (grasshoppers, dragonflies, true bugs).</p>
+    </div>
+    <div class="mnemonic">
+      <div class="mnemonic-title">Counting Arthropod Legs</div>
+      <p>"<span class="constant">6-8-10-lots</span>": Insects have 6 legs, arachnids have 8, crustacean decapods have 10, and myriapods have lots. Remember, crustaceans are the only arthropods with 2 pairs of antennae.</p>
+    </div>
+    <p>Arthropods are the most species-rich animal phylum, with insects alone accounting for over 80% of all known animal species. Their success is attributed to the versatility of jointed, chitinous exoskeletons, flight (insects are the only invertebrates that fly), diverse mouthparts, and complete metamorphosis allowing niche partitioning between life stages.</p>
+  </div>
+
+  <!-- SECTION 9: Deuterostomes – Echinoderms -->
+  <div class="section" id="s9">
+    <div class="section-header"><span class="section-number">9</span><h2>Deuterostomes: Echinoderms</h2></div>
+    <p>Deuterostomes develop differently from protostomes: the blastopore becomes the anus (mouth forms second), cleavage is radial and indeterminate, and the coelom forms by enterocoely (outpocketing of the gut). Echinoderms are the major invertebrate deuterostome phylum and are more closely related to chordates than to any protostome group.</p>
+    <table class="fact-table">
+      <tr><th>Feature</th><th>Details</th></tr>
+      <tr><td>Symmetry</td><td>Adults have <span class="constant">pentaradial</span> (5-part) symmetry; larvae are bilaterally symmetric</td></tr>
+      <tr><td>Endoskeleton</td><td>Calcium carbonate ossicles embedded in skin; often bearing spines</td></tr>
+      <tr><td>Water vascular system</td><td>Unique hydraulic system: water enters through <span class="constant">madreporite</span> → stone canal → ring canal → radial canals → <span class="constant">tube feet</span> (locomotion, feeding, gas exchange)</td></tr>
+      <tr><td>Nervous system</td><td>Nerve ring with radial nerves; no brain; decentralized</td></tr>
+      <tr><td>Reproduction</td><td>Usually separate sexes; external fertilization; remarkable regeneration ability</td></tr>
+    </table>
+    <table class="fact-table">
+      <tr><th>Class</th><th>Common Name</th><th>Key Feature</th></tr>
+      <tr><td>Asteroidea</td><td>Sea stars</td><td>Arms with tube feet on oral surface; stomach can evert to digest prey externally</td></tr>
+      <tr><td>Ophiuroidea</td><td>Brittle stars</td><td>Distinct central disc; thin, flexible arms; rapid movement</td></tr>
+      <tr><td>Echinoidea</td><td>Sea urchins, sand dollars</td><td>No arms; fused ossicles form rigid test; movable spines; Aristotle's lantern (mouth)</td></tr>
+      <tr><td>Holothuroidea</td><td>Sea cucumbers</td><td>Elongated body; reduced ossicles (soft); tube feet modified as tentacles around mouth</td></tr>
+      <tr><td>Crinoidea</td><td>Sea lilies, feather stars</td><td>Filter feeders; mouth faces up; most ancient living class</td></tr>
+    </table>
+    <div class="callout">
+      <div class="callout-title">Protostome vs. Deuterostome Development</div>
+      <p>Protostomes: blastopore → mouth, spiral determinate cleavage, schizocoely (coelom from splitting mesoderm). Deuterostomes: blastopore → anus, radial indeterminate cleavage, enterocoely (coelom from gut outpockets). This fundamental split divides most bilateral animals into two great lineages.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 10: Deuterostomes – Chordates -->
+  <div class="section" id="s10">
+    <div class="section-header"><span class="section-number">10</span><h2>Deuterostomes: Chordates</h2></div>
+    <p>Chordates are defined by four synapomorphies present at some stage of development: a <span class="constant">notochord</span> (flexible rod providing support), a <span class="constant">dorsal hollow nerve cord</span> (becomes the brain and spinal cord in vertebrates), <span class="constant">pharyngeal slits</span> (become gills in fish, modified in terrestrial vertebrates), and a <span class="constant">post-anal tail</span>.</p>
+    <table class="fact-table">
+      <tr><th>Subphylum/Group</th><th>Key Features</th><th>Examples</th></tr>
+      <tr><td>Cephalochordata</td><td>Retain all 4 chordate features as adults; filter feeders; segmented muscles</td><td><span class="constant">Branchiostoma</span> (amphioxus/lancelet)</td></tr>
+      <tr><td>Urochordata</td><td>Larvae have all 4 features; adults are sessile filter feeders that lose most</td><td>Tunicates (sea squirts)</td></tr>
+      <tr><td>Vertebrata</td><td>Vertebral column replaces notochord; neural crest cells; distinct head</td><td>Fish, amphibians, reptiles, birds, mammals</td></tr>
+    </table>
+    <table class="fact-table">
+      <tr><th>Vertebrate Class</th><th>Heart Chambers</th><th>Respiration</th><th>Thermoregulation</th><th>Reproduction</th></tr>
+      <tr><td>Jawless fish (Agnatha)</td><td>2</td><td>Gills</td><td>Ectotherm</td><td>No jaws; cartilaginous skeleton</td></tr>
+      <tr><td>Cartilaginous fish (Chondrichthyes)</td><td>2</td><td>Gills</td><td>Ectotherm</td><td>Internal fertilization; claspers</td></tr>
+      <tr><td>Bony fish (Osteichthyes)</td><td>2</td><td>Gills + swim bladder</td><td>Ectotherm</td><td>Mostly external fertilization</td></tr>
+      <tr><td>Amphibians</td><td><span class="constant">3</span> (2 atria, 1 ventricle)</td><td>Lungs + skin</td><td>Ectotherm</td><td>External fertilization; aquatic larvae</td></tr>
+      <tr><td>Reptiles (non-avian)</td><td>3 or 3.5</td><td>Lungs</td><td>Ectotherm</td><td>Amniotic egg; internal fertilization</td></tr>
+      <tr><td>Birds (Aves)</td><td><span class="constant">4</span></td><td>Lungs (air sacs, one-way flow)</td><td>Endotherm</td><td>Amniotic egg with hard shell</td></tr>
+      <tr><td>Mammals</td><td><span class="constant">4</span></td><td>Lungs (diaphragm)</td><td>Endotherm</td><td>Mammary glands; hair; most are viviparous</td></tr>
+    </table>
+    <div class="callout">
+      <div class="callout-title">The Amniotic Egg</div>
+      <p>The evolution of the amniotic egg freed vertebrates from water for reproduction. Four extraembryonic membranes: <span class="constant">amnion</span> (fluid-filled sac around embryo), <span class="constant">chorion</span> (gas exchange), <span class="constant">allantois</span> (waste storage and gas exchange), <span class="constant">yolk sac</span> (nutrition). Reptiles, birds, and mammals (including egg-laying monotremes) are all amniotes.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 11: Ecology -->
+  <div class="section" id="s11">
+    <div class="section-header"><span class="section-number">11</span><h2>Ecology</h2></div>
+    <p>Ecology is the study of interactions between organisms and their environment at multiple levels of organization: individual, population, community, ecosystem, and biosphere. The ecology unit in lab connects the organismal diversity studied throughout the semester to how these organisms interact in real ecosystems.</p>
+    <table class="fact-table">
+      <tr><th>Level</th><th>Focus</th><th>Key Concepts</th></tr>
+      <tr><td>Population</td><td>Single species in an area</td><td>Density, dispersion patterns (clumped, uniform, random), growth models (exponential vs. logistic), carrying capacity (K), r vs. K selection</td></tr>
+      <tr><td>Community</td><td>Interacting species</td><td>Competition, predation, mutualism, parasitism, commensalism; species diversity, keystone species, ecological succession</td></tr>
+      <tr><td>Ecosystem</td><td>Community + abiotic factors</td><td>Energy flow (trophic levels, 10% rule), nutrient cycling (carbon, nitrogen, phosphorus), food webs, primary productivity</td></tr>
+      <tr><td>Biosphere</td><td>All ecosystems globally</td><td>Biomes, climate patterns, global biogeochemical cycles</td></tr>
+    </table>
+    <div class="callout">
+      <div class="callout-title">Energy Flow</div>
+      <p>Energy enters ecosystems through primary producers (photosynthesis or chemosynthesis). Only about <span class="constant">10%</span> of energy is transferred between trophic levels; the rest is lost as heat through cellular respiration. This is why food chains rarely exceed 4-5 trophic levels and why there are fewer top predators than herbivores. Gross primary productivity (GPP) minus respiration equals net primary productivity (NPP), the energy available to consumers.</p>
+    </div>
+    <table class="fact-table">
+      <tr><th>Interaction</th><th>Species A</th><th>Species B</th><th>Example</th></tr>
+      <tr><td>Mutualism</td><td>+</td><td>+</td><td>Mycorrhizae (fungus + plant roots)</td></tr>
+      <tr><td>Commensalism</td><td>+</td><td>0</td><td>Barnacles on a whale</td></tr>
+      <tr><td>Parasitism</td><td>+</td><td>−</td><td>Tapeworms in a host intestine</td></tr>
+      <tr><td>Competition</td><td>−</td><td>−</td><td>Two bird species competing for nesting sites</td></tr>
+      <tr><td>Predation</td><td>+</td><td>−</td><td>Lion hunting zebra</td></tr>
+    </table>
+    <div class="mnemonic">
+      <div class="mnemonic-title">Succession Types</div>
+      <p><span class="constant">Primary succession</span> begins on bare substrate with no soil (lava flows, retreating glaciers); pioneer species like lichens and mosses build soil over time. <span class="constant">Secondary succession</span> occurs after a disturbance that destroys the community but leaves soil intact (fires, logging, abandoned farmland); proceeds faster because soil and seed banks remain.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 12: Key Comparisons & Constants -->
+  <div class="section" id="s12">
+    <div class="section-header"><span class="section-number">12</span><h2>Key Comparisons &amp; Constants</h2></div>
+    <p>These are the facts and comparisons that show up repeatedly on lab practicals and exams. Know them cold.</p>
+    <table class="fact-table">
+      <tr><th>Fact</th><th>Value / Answer</th></tr>
+      <tr><td>Plant cell wall material</td><td><span class="constant">Cellulose</span></td></tr>
+      <tr><td>Fungal cell wall material</td><td><span class="constant">Chitin</span></td></tr>
+      <tr><td>Bacterial cell wall material</td><td><span class="constant">Peptidoglycan</span></td></tr>
+      <tr><td>Animal cell wall</td><td><span class="constant">None</span> (extracellular matrix with collagen instead)</td></tr>
+      <tr><td>Energy transfer between trophic levels</td><td><span class="constant">~10%</span></td></tr>
+      <tr><td>% of plant species with mycorrhizae</td><td><span class="constant">~90%</span></td></tr>
+      <tr><td>Endosperm ploidy (angiosperms)</td><td><span class="constant">3n</span> (triploid)</td></tr>
+      <tr><td>Insect body plan</td><td><span class="constant">3 segments / 6 legs</span></td></tr>
+      <tr><td>Arachnid body plan</td><td><span class="constant">2 segments / 8 legs</span></td></tr>
+      <tr><td>Crustacean antennae</td><td><span class="constant">2 pairs</span> (unique among arthropods)</td></tr>
+      <tr><td>Chordate defining features</td><td><span class="constant">4</span>: notochord, dorsal hollow nerve cord, pharyngeal slits, post-anal tail</td></tr>
+      <tr><td>Amphibian heart chambers</td><td><span class="constant">3</span> (2 atria, 1 ventricle)</td></tr>
+      <tr><td>Bird/Mammal heart chambers</td><td><span class="constant">4</span> (2 atria, 2 ventricles)</td></tr>
+      <tr><td>Fish heart chambers</td><td><span class="constant">2</span> (1 atrium, 1 ventricle)</td></tr>
+      <tr><td>Echinoderm symmetry</td><td><span class="constant">Pentaradial</span> (adults); bilateral (larvae)</td></tr>
+      <tr><td>Protostome: blastopore becomes</td><td><span class="constant">Mouth</span></td></tr>
+      <tr><td>Deuterostome: blastopore becomes</td><td><span class="constant">Anus</span></td></tr>
+      <tr><td>Dominant generation in ferns</td><td><span class="constant">Sporophyte</span></td></tr>
+      <tr><td>Dominant generation in mosses</td><td><span class="constant">Gametophyte</span></td></tr>
+      <tr><td>Gram-positive stain color</td><td><span class="constant">Purple</span> (crystal violet retained)</td></tr>
+      <tr><td>Gram-negative stain color</td><td><span class="constant">Pink/Red</span> (safranin counterstain)</td></tr>
+      <tr><td>#1 threat to biodiversity</td><td><span class="constant">Habitat destruction</span></td></tr>
+    </table>
+  </div>
+
+  <!-- SECTION 13: Quiz -->
+  <div class="section" id="s13">
+    <div class="section-header"><span class="section-number">13</span><h2>Self-Test Quiz</h2></div>
+    <p style="margin-bottom:1.5rem; color: var(--text-muted);">Select an answer for each question, then check your score.</p>
+    <div id="quiz-container"></div>
+    <div class="quiz-controls">
+      <button class="quiz-btn quiz-btn-primary" onclick="checkQuiz()">Check My Answers</button>
+      <button class="quiz-btn quiz-btn-secondary" onclick="resetQuiz()">Reset Quiz</button>
+    </div>
+    <div class="quiz-score" id="quiz-score">
+      <div class="score-number" id="score-number"></div>
+      <div class="score-label" id="score-label"></div>
+    </div>
+  </div>
+
+  <!-- SECTION 14: Flashcards -->
+  <div class="section" id="s14">
+    <div class="section-header"><span class="section-number">14</span><h2>Flashcards</h2></div>
+    <p style="margin-bottom:1rem; color: var(--text-muted);">Click any card to flip it. Use filters to focus on specific topics.</p>
+    <div class="fc-category-filter" id="fc-filters"></div>
+    <div class="flashcard-grid" id="flashcard-container"></div>
+  </div>
+
+  <!-- SECTION 15: Short Answer -->
+  <div class="section" id="s15">
+    <div class="section-header"><span class="section-number">15</span><h2>Short Answer Practice</h2></div>
+    <p style="margin-bottom:1.5rem; color: var(--text-muted);">Type your answer in your own words, then click "Grade My Answer."</p>
+    <div id="sa-container"></div>
+    <div class="sa-note">Your answers are graded by checking for key concepts and terminology. Write in your own words as if explaining to a classmate.</div>
+  </div>
+
+</div>
+
+<script>
+// ====================== QUIZ DATA ======================
+const quizData = [
+  {q:"What polymer makes up bacterial cell walls?", opts:["Cellulose","Chitin","Peptidoglycan","Keratin"], ans:2, exp:"Peptidoglycan is the unique cell wall polymer of Bacteria. Archaea lack it."},
+  {q:"Gram-positive bacteria appear what color after Gram staining?", opts:["Pink/Red","Purple","Blue","Green"], ans:1, exp:"The thick peptidoglycan layer retains crystal violet, appearing purple."},
+  {q:"Which horizontal gene transfer mechanism involves a bacteriophage?", opts:["Transformation","Conjugation","Transduction","Binary fission"], ans:2, exp:"Transduction uses bacteriophages (viruses) to transfer DNA between bacteria."},
+  {q:"What organelle originated from an engulfed cyanobacterium?", opts:["Mitochondrion","Ribosome","Chloroplast","Endoplasmic reticulum"], ans:2, exp:"Chloroplasts originated via primary endosymbiosis of a cyanobacterium."},
+  {q:"Which protist supergroup includes the closest relatives of animals?", opts:["Excavata","SAR","Archaeplastida","Opisthokonta"], ans:3, exp:"Opisthokonta includes choanoflagellates, the closest protist relatives of animals."},
+  {q:"What structure do Paramecium use for osmoregulation?", opts:["Food vacuole","Contractile vacuole","Eyespot","Pellicle"], ans:1, exp:"The contractile vacuole pumps out excess water to maintain osmotic balance."},
+  {q:"Diatom cell walls (frustules) are made of:", opts:["Calcium carbonate","Cellulose","Silica","Chitin"], ans:2, exp:"Diatoms construct intricate cell walls from silica (silicon dioxide)."},
+  {q:"In the moss life cycle, which generation is dominant?", opts:["Sporophyte","Gametophyte","Both equally","Neither"], ans:1, exp:"The green leafy moss plant you see is the haploid gametophyte. The sporophyte is a small stalk growing from it."},
+  {q:"Clusters of sporangia on the underside of fern fronds are called:", opts:["Prothalli","Archegonia","Sori","Strobili"], ans:2, exp:"Sori (singular: sorus) are clusters of sporangia on fern fronds."},
+  {q:"What is unique about angiosperm reproduction?", opts:["Wind pollination","Spore production","Double fertilization","Flagellated sperm"], ans:2, exp:"Double fertilization produces both an embryo (2n) and triploid endosperm (3n)."},
+  {q:"Monocot flower parts are in multiples of:", opts:["2","3","4","5"], ans:1, exp:"Monocots have flower parts in multiples of 3. Eudicots use 4 or 5."},
+  {q:"Fungal cell walls are composed of:", opts:["Cellulose","Peptidoglycan","Chitin","Lignin"], ans:2, exp:"Chitin is the structural polymer of fungal cell walls, also found in arthropod exoskeletons."},
+  {q:"Which fungal phylum forms arbuscular mycorrhizae with ~90% of plant species?", opts:["Ascomycota","Basidiomycota","Glomeromycota","Zygomycota"], ans:2, exp:"Glomeromycota are obligate plant symbionts forming arbuscular mycorrhizae."},
+  {q:"A lichen is a symbiosis between:", opts:["Two fungi","A fungus and a plant root","A fungus and a photosynthetic organism","An alga and a moss"], ans:2, exp:"Lichens are a fungus + green alga or cyanobacterium."},
+  {q:"Sac fungi (Ascomycota) produce spores in a structure called:", opts:["Basidium","Ascus","Zygosporangium","Conidium"], ans:1, exp:"The ascus is a sac-like structure that produces 8 ascospores by meiosis."},
+  {q:"Acoelomate animals lack:", opts:["A digestive tract","Mesoderm","A body cavity","Bilateral symmetry"], ans:2, exp:"Acoelomates like flatworms have solid mesoderm with no body cavity."},
+  {q:"Which mollusc class has a closed circulatory system?", opts:["Gastropoda","Bivalvia","Cephalopoda","Polyplacophora"], ans:2, exp:"Cephalopods (squid, octopus) have a closed circulatory system for active lifestyles."},
+  {q:"Annelids are distinguished by:", opts:["A radula","Jointed appendages","Segmented bodies","An exoskeleton"], ans:2, exp:"Annelids have segmented bodies (metameres) and a closed circulatory system."},
+  {q:"How many pairs of antennae do crustaceans have?", opts:["0","1","2","4"], ans:2, exp:"Crustaceans are unique among arthropods in having 2 pairs of antennae."},
+  {q:"Complete metamorphosis includes which stages?", opts:["Egg → nymph → adult","Egg → larva → pupa → adult","Egg → juvenile → adult","Egg → larva → adult"], ans:1, exp:"Complete (holometabolous) metamorphosis: egg → larva → pupa → adult."},
+  {q:"Insects have how many legs?", opts:["4","6","8","10"], ans:1, exp:"Insects (Hexapoda) have 3 pairs of legs (6 total), all attached to the thorax."},
+  {q:"In deuterostome development, the blastopore becomes the:", opts:["Mouth","Anus","Notochord","Brain"], ans:1, exp:"In deuterostomes, the blastopore becomes the anus; the mouth forms secondarily."},
+  {q:"The water vascular system is unique to:", opts:["Cnidarians","Arthropods","Echinoderms","Chordates"], ans:2, exp:"The water vascular system (madreporite, tube feet) is an echinoderm synapomorphy."},
+  {q:"Adult echinoderms display what type of symmetry?", opts:["Bilateral","Radial","Pentaradial","Asymmetric"], ans:2, exp:"Adult echinoderms have pentaradial (5-part) symmetry, though larvae are bilateral."},
+  {q:"Which is NOT one of the four chordate synapomorphies?", opts:["Notochord","Vertebral column","Dorsal hollow nerve cord","Post-anal tail"], ans:1, exp:"A vertebral column is a vertebrate feature. The notochord, dorsal hollow nerve cord, pharyngeal slits, and post-anal tail define all chordates."},
+  {q:"How many heart chambers does an amphibian have?", opts:["2","3","4","5"], ans:1, exp:"Amphibians have 3 chambers: 2 atria and 1 ventricle."},
+  {q:"The amniotic egg is found in:", opts:["All vertebrates","Fish and amphibians","Reptiles, birds, and mammals","Only birds"], ans:2, exp:"Reptiles, birds, and mammals are amniotes with amniotic eggs (even if internal in most mammals)."},
+  {q:"About how much energy is transferred between trophic levels?", opts:["1%","10%","50%","90%"], ans:1, exp:"The 10% rule: about 10% of energy passes to the next trophic level; 90% is lost as heat."},
+  {q:"Primary succession occurs on:", opts:["Soil left after a fire","Abandoned farmland","Bare substrate with no soil","A logged forest"], ans:2, exp:"Primary succession begins on bare rock/lava with no pre-existing soil; pioneer species build soil."},
+  {q:"Which is a keystone species interaction?", opts:["A species whose removal causes little change","A species that is most abundant","A species whose removal causes disproportionate ecosystem change","A species that is the largest"], ans:2, exp:"Keystone species have a disproportionately large impact relative to their abundance."},
+];
+
+// ====================== FLASHCARD DATA ======================
+const flashcardData = [
+  {front:"Peptidoglycan", back:"The unique cell wall polymer of Bacteria (not Archaea); target of penicillin", cat:"Prokaryotes"},
+  {front:"Gram-positive color", back:"Purple (crystal violet retained by thick peptidoglycan layer)", cat:"Prokaryotes"},
+  {front:"Gram-negative color", back:"Pink/red (safranin counterstain; thin peptidoglycan, outer membrane with LPS)", cat:"Prokaryotes"},
+  {front:"Three types of horizontal gene transfer", back:"Transformation (free DNA uptake), Transduction (via phage), Conjugation (via pilus)", cat:"Prokaryotes"},
+  {front:"Coccus / Bacillus / Spirillum", back:"Spherical / Rod-shaped / Spiral bacterial cell shapes", cat:"Prokaryotes"},
+  {front:"Photoautotroph", back:"Uses light energy + CO₂ as carbon source (cyanobacteria, plants)", cat:"Prokaryotes"},
+  {front:"Chemoautotroph", back:"Uses chemical energy from inorganic reactions + CO₂ (nitrifying bacteria)", cat:"Prokaryotes"},
+  {front:"Endosymbiotic theory", back:"Mitochondria from alpha-proteobacteria; chloroplasts from cyanobacteria; both retain own DNA", cat:"Protists"},
+  {front:"SAR: Alveolata", back:"Membrane sacs (alveoli) beneath surface; includes Paramecium, Plasmodium, dinoflagellates", cat:"Protists"},
+  {front:"SAR: Stramenopila", back:"Hairy + smooth flagella; includes diatoms (silica frustules), brown algae, water molds", cat:"Protists"},
+  {front:"Opisthokonta protists", back:"Choanoflagellates: collar cells with flagellum; closest protist relatives of animals & fungi", cat:"Protists"},
+  {front:"Contractile vacuole", back:"Pumps excess water out of freshwater protists like Paramecium (osmoregulation)", cat:"Protists"},
+  {front:"Pseudopods / Cilia / Flagella", back:"Amoeba movement / Paramecium movement / Euglena & Trypanosoma movement", cat:"Protists"},
+  {front:"Alternation of generations", back:"Life cycle with multicellular haploid gametophyte (n) and multicellular diploid sporophyte (2n)", cat:"Plants"},
+  {front:"Bryophyte dominant generation", back:"Gametophyte (the green leafy plant you see); sporophyte depends on gametophyte", cat:"Plants"},
+  {front:"Fern dominant generation", back:"Sporophyte (the large frond-bearing plant); gametophyte is a tiny prothallus", cat:"Plants"},
+  {front:"Sori", back:"Clusters of sporangia on the underside of fern fronds", cat:"Plants"},
+  {front:"Fern prothallus", back:"The tiny heart-shaped gametophyte of a fern; produces eggs and swimming sperm", cat:"Plants"},
+  {front:"Key land plant adaptations", back:"Cuticle, stomata, sporopollenin, gametangia (archegonia/antheridia), vascular tissue", cat:"Plants"},
+  {front:"Double fertilization", back:"Angiosperm only: 1 sperm + egg = zygote (2n); 1 sperm + 2 polar nuclei = endosperm (3n)", cat:"Plants"},
+  {front:"Monocot features", back:"1 cotyledon, parallel veins, flower parts in 3s, scattered vascular bundles, fibrous roots", cat:"Plants"},
+  {front:"Eudicot features", back:"2 cotyledons, net venation, flower parts in 4s or 5s, ring vascular bundles, taproot", cat:"Plants"},
+  {front:"Gymnosperm vs. angiosperm", back:"Gymnosperms: naked seeds on cones, no flowers, wind pollinated. Angiosperms: seeds in fruits, flowers, diverse pollinators", cat:"Plants"},
+  {front:"Fungal nutrition", back:"Heterotrophic absorption: secrete enzymes externally, then absorb digested nutrients", cat:"Fungi"},
+  {front:"Fungal cell wall material", back:"Chitin (same as arthropod exoskeletons)", cat:"Fungi"},
+  {front:"Fungal storage carbohydrate", back:"Glycogen (like animals, not starch like plants)", cat:"Fungi"},
+  {front:"Ascomycota", back:"Sac fungi: ascus produces 8 ascospores; morels, truffles, Penicillium, yeasts", cat:"Fungi"},
+  {front:"Basidiomycota", back:"Club fungi: basidium produces 4 basidiospores; mushrooms, puffballs, rusts", cat:"Fungi"},
+  {front:"Mycorrhizae", back:"Mutualistic fungus-plant root association; fungus provides minerals (P), plant provides sugars; ~90% of plants", cat:"Fungi"},
+  {front:"Lichen", back:"Fungus + green alga or cyanobacterium; bioindicator for air quality", cat:"Fungi"},
+  {front:"Platyhelminthes (flatworms)", back:"Acoelomate; dorso-ventrally flat; gastrovascular cavity (1 opening); no circulatory system", cat:"Lophotrochozoa"},
+  {front:"Mollusc body plan", back:"Muscular foot + visceral mass + mantle (secretes shell); most have radula", cat:"Lophotrochozoa"},
+  {front:"Cephalopod features", back:"Closed circulatory system, complex eyes, jet propulsion, high intelligence; reduced/no shell", cat:"Lophotrochozoa"},
+  {front:"Bivalve features", back:"Two hinged shells; filter feeders via gills; no head or radula", cat:"Lophotrochozoa"},
+  {front:"Annelid features", back:"Segmented (metameres); closed circulatory system; hydrostatic skeleton; setae/parapodia", cat:"Lophotrochozoa"},
+  {front:"Acoelomate vs. Pseudocoelomate vs. Coelomate", back:"No cavity (flatworms) / Cavity not fully lined by mesoderm (nematodes) / True cavity lined by mesoderm (annelids, arthropods, chordates)", cat:"Lophotrochozoa"},
+  {front:"Ecdysis", back:"Molting: shedding the external cuticle to grow; defines Ecdysozoa (nematodes, arthropods)", cat:"Ecdysozoa"},
+  {front:"Arthropod synapomorphies", back:"Jointed appendages, chitinous exoskeleton, segmented body, open circulatory system", cat:"Ecdysozoa"},
+  {front:"Chelicerata", back:"No antennae; chelicerae instead; 8 legs; spiders, scorpions, ticks, horseshoe crabs", cat:"Ecdysozoa"},
+  {front:"Insect body plan", back:"Head + thorax + abdomen; 3 pairs of legs (on thorax); 1 pair of antennae; often wings", cat:"Ecdysozoa"},
+  {front:"Complete vs. incomplete metamorphosis", back:"Complete: egg→larva→pupa→adult (butterflies). Incomplete: egg→nymph→adult (grasshoppers)", cat:"Ecdysozoa"},
+  {front:"6-8-10-lots", back:"Insect legs=6, arachnid=8, decapod crustacean=10, myriapod=lots", cat:"Ecdysozoa"},
+  {front:"Protostome vs. deuterostome blastopore", back:"Protostome: blastopore → mouth. Deuterostome: blastopore → anus", cat:"Deuterostomes"},
+  {front:"Echinoderm synapomorphies", back:"Pentaradial symmetry (adults), water vascular system, endoskeleton of CaCO₃ ossicles", cat:"Deuterostomes"},
+  {front:"Water vascular system pathway", back:"Madreporite → stone canal → ring canal → radial canals → tube feet", cat:"Deuterostomes"},
+  {front:"Asteroidea", back:"Sea stars: tube feet, can evert stomach for external digestion", cat:"Deuterostomes"},
+  {front:"Echinoidea", back:"Sea urchins/sand dollars: fused test, spines, Aristotle's lantern (mouth apparatus)", cat:"Deuterostomes"},
+  {front:"4 chordate synapomorphies", back:"Notochord, dorsal hollow nerve cord, pharyngeal slits, post-anal tail", cat:"Deuterostomes"},
+  {front:"Cephalochordata", back:"Lancelets (Branchiostoma): retain all 4 chordate features as adults; filter feeders", cat:"Deuterostomes"},
+  {front:"Urochordata", back:"Tunicates (sea squirts): larvae have all 4 features; sessile filter-feeding adults lose most", cat:"Deuterostomes"},
+  {front:"Amphibian heart", back:"3 chambers (2 atria, 1 ventricle); ectotherm; lungs + skin respiration", cat:"Deuterostomes"},
+  {front:"Amniotic egg membranes", back:"Amnion (fluid sac), chorion (gas exchange), allantois (waste), yolk sac (nutrition)", cat:"Deuterostomes"},
+  {front:"10% rule", back:"Only ~10% of energy transfers between trophic levels; rest lost as heat", cat:"Ecology"},
+  {front:"Primary succession", back:"Starts on bare substrate (no soil); pioneer species (lichens/mosses) build soil; slow", cat:"Ecology"},
+  {front:"Secondary succession", back:"After disturbance that leaves soil intact (fire, farming); faster than primary", cat:"Ecology"},
+  {front:"Keystone species", back:"Disproportionately large ecosystem impact relative to abundance; removal causes collapse", cat:"Ecology"},
+  {front:"Mutualism / Commensalism / Parasitism", back:"Both benefit (+/+) / One benefits, other unaffected (+/0) / One benefits, other harmed (+/−)", cat:"Ecology"},
+  {front:"r-selection vs. K-selection", back:"r: many small offspring, little care, rapid reproduction. K: few large offspring, much care, near carrying capacity", cat:"Ecology"},
+];
+
+// ====================== SHORT ANSWER DATA ======================
+const shortAnswerData = [
+  {
+    q: "Explain the endosymbiotic theory and provide at least three pieces of evidence supporting it.",
+    concepts: [
+      {term:"alpha-proteobacterium", weight:2, alt:["proteobacteria","ancestral bacterium"]},
+      {term:"cyanobacterium", weight:2, alt:["cyanobacteria"]},
+      {term:"mitochondria", weight:2, alt:["mitochondrion"]},
+      {term:"chloroplast", weight:2, alt:["chloroplasts"]},
+      {term:"double membrane", weight:2, alt:["two membranes","own membrane"]},
+      {term:"own DNA", weight:2, alt:["circular DNA","their own DNA","bacterial DNA"]},
+      {term:"own ribosomes", weight:1, alt:["bacterial ribosomes","70S"]},
+      {term:"binary fission", weight:1, alt:["divide independently","replicate independently"]},
+      {term:"engulfed", weight:1, alt:["endosymbiosis","engulf","phagocytosis","taken up"]},
+    ],
+    model: "The endosymbiotic theory proposes that mitochondria originated from an alpha-proteobacterium that was engulfed by an ancestral eukaryotic cell, and chloroplasts originated from an engulfed cyanobacterium. Evidence includes: both organelles have double membranes (consistent with engulfment), both contain their own circular DNA similar to bacterial genomes, both have their own ribosomes resembling bacterial ribosomes, and both replicate by binary fission independently of the cell cycle."
+  },
+  {
+    q: "Compare and contrast the body plans of flatworms, annelids, and arthropods, focusing on segmentation, body cavity type, and circulatory system.",
+    concepts: [
+      {term:"acoelomate", weight:2, alt:["no body cavity","no coelom"]},
+      {term:"coelomate", weight:2, alt:["true coelom","coelom"]},
+      {term:"flatworms", weight:1, alt:["platyhelminthes"]},
+      {term:"segmented", weight:2, alt:["segmentation","metameres"]},
+      {term:"closed circulatory", weight:2, alt:["closed circulation"]},
+      {term:"open circulatory", weight:2, alt:["open circulation","hemolymph"]},
+      {term:"exoskeleton", weight:1, alt:["chitinous exoskeleton"]},
+      {term:"jointed", weight:1, alt:["jointed appendages"]},
+      {term:"hydrostatic", weight:1, alt:["hydrostatic skeleton"]},
+    ],
+    model: "Flatworms are acoelomate (no body cavity), unsegmented, dorsoventrally flattened, and lack a circulatory system entirely. Annelids are coelomate with segmented bodies (metameres), a hydrostatic skeleton, and a closed circulatory system. Arthropods are also coelomate and segmented but have a chitinous exoskeleton with jointed appendages and an open circulatory system with hemolymph."
+  },
+  {
+    q: "Describe the water vascular system of echinoderms, tracing the path of water from entry to the tube feet, and explain its functions.",
+    concepts: [
+      {term:"madreporite", weight:2, alt:["sieve plate"]},
+      {term:"stone canal", weight:2},
+      {term:"ring canal", weight:2},
+      {term:"radial canal", weight:2, alt:["radial canals"]},
+      {term:"tube feet", weight:2, alt:["podia"]},
+      {term:"locomotion", weight:1, alt:["movement","walking"]},
+      {term:"feeding", weight:1, alt:["food capture","prey"]},
+      {term:"gas exchange", weight:1, alt:["respiration"]},
+      {term:"hydraulic", weight:1, alt:["water pressure"]},
+    ],
+    model: "Water enters through the madreporite (a sieve-like plate on the aboral surface), travels down the stone canal to the ring canal encircling the mouth, then flows into five radial canals extending into each arm. The radial canals connect to numerous tube feet, which operate hydraulically. The water vascular system functions in locomotion (tube feet grip and release the substrate), feeding (tube feet can grasp prey or manipulate food), and gas exchange (thin-walled tube feet allow diffusion)."
+  },
+  {
+    q: "Explain why seedless plants require water for reproduction while seed plants do not.",
+    concepts: [
+      {term:"flagellated sperm", weight:2, alt:["swimming sperm","sperm swim","motile sperm"]},
+      {term:"water", weight:2, alt:["moisture","wet"]},
+      {term:"pollen", weight:2, alt:["pollen grain","pollen tube"]},
+      {term:"seed", weight:1, alt:["seeds"]},
+      {term:"bryophyte", weight:1, alt:["moss","fern","seedless"]},
+      {term:"wind", weight:1, alt:["wind pollination","animal pollination"]},
+      {term:"gametophyte", weight:1},
+      {term:"desiccation", weight:1, alt:["drying","dry"]},
+    ],
+    model: "Seedless plants (bryophytes and ferns) produce flagellated sperm that must physically swim through a film of water to reach the egg, which is why these plants are most abundant in moist environments. Seed plants evolved pollen, which encases the male gametophyte in a desiccation-resistant structure that can be carried by wind or animals to the female structures without any water requirement. The pollen grain germinates a pollen tube that delivers sperm directly to the egg, eliminating the need for external water."
+  },
+  {
+    q: "Compare protostome and deuterostome development, covering blastopore fate, cleavage pattern, and coelom formation.",
+    concepts: [
+      {term:"blastopore", weight:2},
+      {term:"mouth", weight:2, alt:["mouth first"]},
+      {term:"anus", weight:2, alt:["anus first"]},
+      {term:"spiral", weight:1, alt:["spiral cleavage"]},
+      {term:"radial", weight:1, alt:["radial cleavage"]},
+      {term:"determinate", weight:1, alt:["determinate cleavage"]},
+      {term:"indeterminate", weight:1, alt:["indeterminate cleavage"]},
+      {term:"schizocoely", weight:2, alt:["splitting of mesoderm"]},
+      {term:"enterocoely", weight:2, alt:["outpocketing","gut outpocket"]},
+    ],
+    model: "In protostomes, the blastopore becomes the mouth, cleavage is spiral and determinate (cell fates fixed early), and the coelom forms by schizocoely (splitting of mesoderm). In deuterostomes, the blastopore becomes the anus (mouth forms second), cleavage is radial and indeterminate (cells can form complete organisms if separated), and the coelom forms by enterocoely (outpocketing of the developing gut)."
+  },
+  {
+    q: "Describe the four extraembryonic membranes of the amniotic egg and explain the function of each.",
+    concepts: [
+      {term:"amnion", weight:2},
+      {term:"chorion", weight:2},
+      {term:"allantois", weight:2},
+      {term:"yolk sac", weight:2, alt:["yolk"]},
+      {term:"fluid", weight:1, alt:["aqueous","cushion","moist"]},
+      {term:"gas exchange", weight:1, alt:["oxygen","CO2","respiration"]},
+      {term:"waste", weight:1, alt:["uric acid","metabolic waste"]},
+      {term:"nutrition", weight:1, alt:["nourish","nutrients","food"]},
+    ],
+    model: "The amnion surrounds the embryo in a fluid-filled sac, providing a moist cushioned environment. The chorion lies just inside the shell and facilitates gas exchange (oxygen in, CO₂ out). The allantois stores metabolic waste products (primarily uric acid) and also assists with gas exchange. The yolk sac contains stored nutrients that provide nutrition to the developing embryo."
+  },
+  {
+    q: "Explain the 10% rule in ecology and why food chains rarely exceed 4-5 trophic levels.",
+    concepts: [
+      {term:"10%", weight:2, alt:["ten percent","10 percent"]},
+      {term:"heat", weight:2, alt:["lost as heat","thermal energy"]},
+      {term:"cellular respiration", weight:1, alt:["respiration","metabolism","metabolic"]},
+      {term:"trophic", weight:1, alt:["trophic level","trophic levels"]},
+      {term:"energy", weight:2, alt:["energy transfer","energy flow"]},
+      {term:"producers", weight:1, alt:["primary producers","plants","autotrophs"]},
+      {term:"top predators", weight:1, alt:["apex predator","fewer predators"]},
+      {term:"insufficient", weight:1, alt:["not enough","too little"]},
+    ],
+    model: "The 10% rule states that only about 10% of energy at one trophic level is transferred to the next level. The remaining 90% is lost as heat through cellular respiration and is used for the organism's own metabolic processes. Because so much energy is lost at each step, there is progressively less energy available to support organisms at higher trophic levels. By the fourth or fifth level, there is insufficient energy to support a viable population of top predators, which is why food chains are typically short."
+  },
+  {
+    q: "Describe the differences between complete and incomplete metamorphosis in insects, giving an example organism for each.",
+    concepts: [
+      {term:"complete", weight:1, alt:["holometabolous"]},
+      {term:"incomplete", weight:1, alt:["hemimetabolous"]},
+      {term:"larva", weight:2, alt:["larvae","caterpillar","maggot","grub"]},
+      {term:"pupa", weight:2, alt:["pupal","chrysalis","cocoon"]},
+      {term:"nymph", weight:2, alt:["nymphs"]},
+      {term:"butterfly", weight:1, alt:["beetle","fly","bee","moth","ant"]},
+      {term:"grasshopper", weight:1, alt:["dragonfly","cricket","cockroach","true bug"]},
+      {term:"different resources", weight:1, alt:["different niche","niche partitioning","different habitat","different food"]},
+    ],
+    model: "Complete (holometabolous) metamorphosis has four stages: egg, larva, pupa, and adult. The larva looks completely different from the adult and often exploits different resources (e.g., caterpillar vs. butterfly). During the pupal stage, the body undergoes radical reorganization. Examples include butterflies, beetles, and flies. Incomplete (hemimetabolous) metamorphosis has three stages: egg, nymph, and adult. Nymphs resemble small wingless versions of the adult and gradually acquire adult features through successive molts. Examples include grasshoppers, dragonflies, and cockroaches."
+  },
+];
+
+// ====================== QUIZ ENGINE ======================
+function buildQuiz() {
+  const container = document.getElementById('quiz-container');
+  container.innerHTML = quizData.map((q, i) => {
+    const opts = q.opts.map((o, j) => `<label><input type="radio" name="q${i}" value="${j}"> ${o}</label>`).join('');
+    return `<div class="quiz-q" id="qq${i}"><p>${i+1}. ${q.q}</p>${opts}<div class="quiz-feedback" id="qf${i}"></div></div>`;
+  }).join('');
+}
+function checkQuiz() {
+  let score = 0;
+  quizData.forEach((q, i) => {
+    const sel = document.querySelector(`input[name="q${i}"]:checked`);
+    const fb = document.getElementById(`qf${i}`);
+    fb.style.display = 'block';
+    if (sel && parseInt(sel.value) === q.ans) {
+      score++;
+      fb.className = 'quiz-feedback correct';
+      fb.textContent = '✓ Correct! ' + q.exp;
+    } else {
+      fb.className = 'quiz-feedback incorrect';
+      fb.textContent = '✗ Incorrect. ' + q.exp;
+    }
+  });
+  document.getElementById('score-number').textContent = score + ' / ' + quizData.length;
+  const pct = Math.round(score / quizData.length * 100);
+  document.getElementById('score-label').textContent = pct + '% — ' + (pct >= 80 ? 'Great job!' : pct >= 60 ? 'Good effort, keep reviewing!' : 'Keep studying, you\'ll get there!');
+}
+function resetQuiz() {
+  quizData.forEach((_, i) => {
+    const radios = document.querySelectorAll(`input[name="q${i}"]`);
+    radios.forEach(r => r.checked = false);
+    const fb = document.getElementById(`qf${i}`);
+    fb.style.display = 'none';
+  });
+  document.getElementById('score-number').textContent = '';
+  document.getElementById('score-label').textContent = '';
+}
+
+// ====================== FLASHCARD ENGINE ======================
+function buildFlashcards() {
+  const cats = [...new Set(flashcardData.map(c => c.cat))];
+  const filterDiv = document.getElementById('fc-filters');
+  filterDiv.innerHTML = `<button class="fc-filter-btn active" onclick="filterFC('all')">All</button>` +
+    cats.map(c => `<button class="fc-filter-btn" onclick="filterFC('${c}')">${c}</button>`).join('');
+  renderFC('all');
+}
+function renderFC(cat) {
+  const cards = cat === 'all' ? flashcardData : flashcardData.filter(c => c.cat === cat);
+  document.getElementById('flashcard-container').innerHTML = cards.map(c =>
+    `<div class="fc-card" onclick="this.classList.toggle('flipped')">
+      <div class="fc-card-inner">
+        <div class="fc-card-front"><span class="fc-cat">${c.cat}</span>${c.front}</div>
+        <div class="fc-card-back">${c.back}</div>
+      </div>
+    </div>`
+  ).join('');
+}
+function filterFC(cat) {
+  document.querySelectorAll('.fc-filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  renderFC(cat);
+}
+
+// ====================== SHORT ANSWER ENGINE ======================
+function buildSA() {
+  document.getElementById('sa-container').innerHTML = shortAnswerData.map((q, i) =>
+    `<div class="sa-question" id="saq${i}">
+      <p>${i+1}. ${q.q}</p>
+      <textarea id="sat${i}" placeholder="Type your answer here..."></textarea>
+      <button class="sa-grade-btn" onclick="gradeSA(${i})">Grade My Answer</button>
+      <div class="sa-result" id="sar${i}">
+        <div class="sa-bar"><div class="sa-bar-fill" id="sab${i}"></div></div>
+        <div class="sa-tags" id="satags${i}"></div>
+        <span class="sa-model-toggle" onclick="toggleModel(${i})">▸ Show model answer</span>
+        <div class="sa-model" id="sam${i}">${q.model}</div>
+      </div>
+    </div>`
+  ).join('');
+}
+function gradeSA(i) {
+  const answer = document.getElementById(`sat${i}`).value.toLowerCase();
+  const q = shortAnswerData[i];
+  let earned = 0, total = 0, tags = [];
+  q.concepts.forEach(c => {
+    total += c.weight;
+    const allTerms = [c.term, ...(c.alt || [])];
+    const hit = allTerms.some(t => answer.includes(t.toLowerCase()));
+    if (hit) { earned += c.weight; tags.push({term: c.term, hit: true}); }
+    else { tags.push({term: c.term, hit: false}); }
+  });
+  const pct = Math.round(earned / total * 100);
+  const bar = document.getElementById(`sab${i}`);
+  bar.style.width = pct + '%';
+  bar.style.background = pct >= 70 ? '#22c55e' : pct >= 40 ? '#eab308' : '#ef4444';
+  document.getElementById(`satags${i}`).innerHTML = tags.map(t =>
+    `<span class="sa-tag ${t.hit ? 'hit' : 'miss'}">${t.hit ? '✓' : '○'} ${t.term}</span>`
+  ).join('');
+  document.getElementById(`sar${i}`).style.display = 'block';
+}
+function toggleModel(i) {
+  const m = document.getElementById(`sam${i}`);
+  m.style.display = m.style.display === 'block' ? 'none' : 'block';
+}
+
+// ====================== INIT ======================
+buildQuiz();
+buildFlashcards();
+buildSA();
+</script>
+</body>
+</html>
