@@ -153,7 +153,7 @@ a:hover { text-decoration: underline; }
 }
 .styled-list li:last-child { border-bottom: none; }
 .styled-list li::before {
-  content: '▸';
+  content: '<span aria-hidden="true">▸</span>';
   position: absolute;
   left: 0.3rem;
   color: var(--accent);
@@ -279,9 +279,40 @@ a:hover { text-decoration: underline; }
   .toc-grid { grid-template-columns: 1fr; }
   .flashcard-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* ─── WCAG 2.1 AA: Visible focus indicators ─── */
+:focus-visible {
+  outline: 3px solid #005fcc !important;
+  outline-offset: 2px !important;
+}
+.tab-btn:focus-visible, .nav-btn:focus-visible {
+  outline: 3px solid #005fcc !important;
+  outline-offset: 2px !important;
+}
+/* ─── Skip link ─── */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: #005fcc;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0 0 6px 6px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  z-index: 9999;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+}
+
 </style>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 
 <div class="hero">
   <h1>Biology II Lab</h1>
@@ -505,7 +536,7 @@ a:hover { text-decoration: underline; }
     </table>
     <div class="callout">
       <div class="callout-title">Insect Metamorphosis</div>
-      <p><span class="constant">Complete metamorphosis</span> (holometabolous): egg → larva → pupa → adult. The larval and adult stages are morphologically distinct and often exploit different resources (butterflies, beetles, flies, bees). <span class="constant">Incomplete metamorphosis</span> (hemimetabolous): egg → nymph → adult. Nymphs resemble small adults and gradually acquire adult features through successive molts (grasshoppers, dragonflies, true bugs).</p>
+      <p><span class="constant">Complete metamorphosis</span> (holometabolous): egg <span aria-hidden="true">→</span> larva <span aria-hidden="true">→</span> pupa <span aria-hidden="true">→</span> adult. The larval and adult stages are morphologically distinct and often exploit different resources (butterflies, beetles, flies, bees). <span class="constant">Incomplete metamorphosis</span> (hemimetabolous): egg <span aria-hidden="true">→</span> nymph <span aria-hidden="true">→</span> adult. Nymphs resemble small adults and gradually acquire adult features through successive molts (grasshoppers, dragonflies, true bugs).</p>
     </div>
     <div class="mnemonic">
       <div class="mnemonic-title">Counting Arthropod Legs</div>
@@ -522,7 +553,7 @@ a:hover { text-decoration: underline; }
       <tr><th>Feature</th><th>Details</th></tr>
       <tr><td>Symmetry</td><td>Adults have <span class="constant">pentaradial</span> (5-part) symmetry; larvae are bilaterally symmetric</td></tr>
       <tr><td>Endoskeleton</td><td>Calcium carbonate ossicles embedded in skin; often bearing spines</td></tr>
-      <tr><td>Water vascular system</td><td>Unique hydraulic system: water enters through <span class="constant">madreporite</span> → stone canal → ring canal → radial canals → <span class="constant">tube feet</span> (locomotion, feeding, gas exchange)</td></tr>
+      <tr><td>Water vascular system</td><td>Unique hydraulic system: water enters through <span class="constant">madreporite</span> <span aria-hidden="true">→</span> stone canal <span aria-hidden="true">→</span> ring canal <span aria-hidden="true">→</span> radial canals <span aria-hidden="true">→</span> <span class="constant">tube feet</span> (locomotion, feeding, gas exchange)</td></tr>
       <tr><td>Nervous system</td><td>Nerve ring with radial nerves; no brain; decentralized</td></tr>
       <tr><td>Reproduction</td><td>Usually separate sexes; external fertilization; remarkable regeneration ability</td></tr>
     </table>
@@ -536,7 +567,7 @@ a:hover { text-decoration: underline; }
     </table>
     <div class="callout">
       <div class="callout-title">Protostome vs. Deuterostome Development</div>
-      <p>Protostomes: blastopore → mouth, spiral determinate cleavage, schizocoely (coelom from splitting mesoderm). Deuterostomes: blastopore → anus, radial indeterminate cleavage, enterocoely (coelom from gut outpockets). This fundamental split divides most bilateral animals into two great lineages.</p>
+      <p>Protostomes: blastopore <span aria-hidden="true">→</span> mouth, spiral determinate cleavage, schizocoely (coelom from splitting mesoderm). Deuterostomes: blastopore <span aria-hidden="true">→</span> anus, radial indeterminate cleavage, enterocoely (coelom from gut outpockets). This fundamental split divides most bilateral animals into two great lineages.</p>
     </div>
   </div>
 
@@ -681,7 +712,7 @@ const quizData = [
   {q:"Which mollusc class has a closed circulatory system?", opts:["Gastropoda","Bivalvia","Cephalopoda","Polyplacophora"], ans:2, exp:"Cephalopods (squid, octopus) have a closed circulatory system for active lifestyles."},
   {q:"Annelids are distinguished by:", opts:["A radula","Jointed appendages","Segmented bodies","An exoskeleton"], ans:2, exp:"Annelids have segmented bodies (metameres) and a closed circulatory system."},
   {q:"How many pairs of antennae do crustaceans have?", opts:["0","1","2","4"], ans:2, exp:"Crustaceans are unique among arthropods in having 2 pairs of antennae."},
-  {q:"Complete metamorphosis includes which stages?", opts:["Egg → nymph → adult","Egg → larva → pupa → adult","Egg → juvenile → adult","Egg → larva → adult"], ans:1, exp:"Complete (holometabolous) metamorphosis: egg → larva → pupa → adult."},
+  {q:"Complete metamorphosis includes which stages?", opts:["Egg <span aria-hidden="true">→</span> nymph <span aria-hidden="true">→</span> adult","Egg <span aria-hidden="true">→</span> larva <span aria-hidden="true">→</span> pupa <span aria-hidden="true">→</span> adult","Egg <span aria-hidden="true">→</span> juvenile <span aria-hidden="true">→</span> adult","Egg <span aria-hidden="true">→</span> larva <span aria-hidden="true">→</span> adult"], ans:1, exp:"Complete (holometabolous) metamorphosis: egg <span aria-hidden="true">→</span> larva <span aria-hidden="true">→</span> pupa <span aria-hidden="true">→</span> adult."},
   {q:"Insects have how many legs?", opts:["4","6","8","10"], ans:1, exp:"Insects (Hexapoda) have 3 pairs of legs (6 total), all attached to the thorax."},
   {q:"In deuterostome development, the blastopore becomes the:", opts:["Mouth","Anus","Notochord","Brain"], ans:1, exp:"In deuterostomes, the blastopore becomes the anus; the mouth forms secondarily."},
   {q:"The water vascular system is unique to:", opts:["Cnidarians","Arthropods","Echinoderms","Chordates"], ans:2, exp:"The water vascular system (madreporite, tube feet) is an echinoderm synapomorphy."},
@@ -736,11 +767,11 @@ const flashcardData = [
   {front:"Arthropod synapomorphies", back:"Jointed appendages, chitinous exoskeleton, segmented body, open circulatory system", cat:"Ecdysozoa"},
   {front:"Chelicerata", back:"No antennae; chelicerae instead; 8 legs; spiders, scorpions, ticks, horseshoe crabs", cat:"Ecdysozoa"},
   {front:"Insect body plan", back:"Head + thorax + abdomen; 3 pairs of legs (on thorax); 1 pair of antennae; often wings", cat:"Ecdysozoa"},
-  {front:"Complete vs. incomplete metamorphosis", back:"Complete: egg→larva→pupa→adult (butterflies). Incomplete: egg→nymph→adult (grasshoppers)", cat:"Ecdysozoa"},
+  {front:"Complete vs. incomplete metamorphosis", back:"Complete: egg<span aria-hidden="true">→</span>larva<span aria-hidden="true">→</span>pupa<span aria-hidden="true">→</span>adult (butterflies). Incomplete: egg<span aria-hidden="true">→</span>nymph<span aria-hidden="true">→</span>adult (grasshoppers)", cat:"Ecdysozoa"},
   {front:"6-8-10-lots", back:"Insect legs=6, arachnid=8, decapod crustacean=10, myriapod=lots", cat:"Ecdysozoa"},
-  {front:"Protostome vs. deuterostome blastopore", back:"Protostome: blastopore → mouth. Deuterostome: blastopore → anus", cat:"Deuterostomes"},
+  {front:"Protostome vs. deuterostome blastopore", back:"Protostome: blastopore <span aria-hidden="true">→</span> mouth. Deuterostome: blastopore <span aria-hidden="true">→</span> anus", cat:"Deuterostomes"},
   {front:"Echinoderm synapomorphies", back:"Pentaradial symmetry (adults), water vascular system, endoskeleton of CaCO₃ ossicles", cat:"Deuterostomes"},
-  {front:"Water vascular system pathway", back:"Madreporite → stone canal → ring canal → radial canals → tube feet", cat:"Deuterostomes"},
+  {front:"Water vascular system pathway", back:"Madreporite <span aria-hidden="true">→</span> stone canal <span aria-hidden="true">→</span> ring canal <span aria-hidden="true">→</span> radial canals <span aria-hidden="true">→</span> tube feet", cat:"Deuterostomes"},
   {front:"Asteroidea", back:"Sea stars: tube feet, can evert stomach for external digestion", cat:"Deuterostomes"},
   {front:"Echinoidea", back:"Sea urchins/sand dollars: fused test, spines, Aristotle's lantern (mouth apparatus)", cat:"Deuterostomes"},
   {front:"4 chordate synapomorphies", back:"Notochord, dorsal hollow nerve cord, pharyngeal slits, post-anal tail", cat:"Deuterostomes"},
@@ -893,10 +924,10 @@ function checkQuiz() {
     if (sel && parseInt(sel.value) === q.ans) {
       score++;
       fb.className = 'quiz-feedback correct';
-      fb.textContent = '✓ Correct! ' + q.exp;
+      fb.textContent = '<span aria-hidden="true">✓</span> Correct! ' + q.exp;
     } else {
       fb.className = 'quiz-feedback incorrect';
-      fb.textContent = '✗ Incorrect. ' + q.exp;
+      fb.textContent = '<span aria-hidden="true">✗</span> Incorrect. ' + q.exp;
     }
   });
   document.getElementById('score-number').textContent = score + ' / ' + quizData.length;
@@ -949,7 +980,7 @@ function buildSA() {
       <div class="sa-result" id="sar${i}">
         <div class="sa-bar"><div class="sa-bar-fill" id="sab${i}"></div></div>
         <div class="sa-tags" id="satags${i}"></div>
-        <span class="sa-model-toggle" onclick="toggleModel(${i})">▸ Show model answer</span>
+        <span class="sa-model-toggle" onclick="toggleModel(${i})"><span aria-hidden="true">▸</span> Show model answer</span>
         <div class="sa-model" id="sam${i}">${q.model}</div>
       </div>
     </div>`
@@ -971,7 +1002,7 @@ function gradeSA(i) {
   bar.style.width = pct + '%';
   bar.style.background = pct >= 70 ? '#22c55e' : pct >= 40 ? '#eab308' : '#ef4444';
   document.getElementById(`satags${i}`).innerHTML = tags.map(t =>
-    `<span class="sa-tag ${t.hit ? 'hit' : 'miss'}">${t.hit ? '✓' : '○'} ${t.term}</span>`
+    `<span class="sa-tag ${t.hit ? 'hit' : 'miss'}">${t.hit ? '<span aria-hidden="true">✓</span>' : '<span aria-hidden="true">○</span>'} ${t.term}</span>`
   ).join('');
   document.getElementById(`sar${i}`).style.display = 'block';
 }
@@ -987,7 +1018,7 @@ buildSA();
 </script>
 
   <div style="max-width: 800px; margin: 40px auto; padding: 20px 30px; background: #fff8e1; border-left: 4px solid #f9a825; border-radius: 8px; font-size: 14px; line-height: 1.6; color: #555;">
-  <div style="font-weight: bold; font-size: 15px; margin-bottom: 10px;">⚠️ Important Notice</div>
+  <div style="font-weight: bold; font-size: 15px; margin-bottom: 10px;"><span aria-hidden="true">⚠️</span> Important Notice</div>
   <p style="margin: 0 0 10px 0;">These study resources are provided free of charge for educational purposes only. They are intended as supplemental study aids and should not be used as a substitute for your course textbooks, lecture materials, or the guidance of your instructors.</p>
   <p style="margin: 0 0 10px 0;">While every effort has been made to ensure accuracy, this content may contain errors, omissions, or information that is out of date. Science is constantly evolving, and material that was accurate at the time of writing may no longer reflect current understanding. Always verify important facts, formulas, and concepts against your official course materials.</p>
   <p style="margin: 0 0 10px 0;">No guarantees are made regarding the completeness, accuracy, or reliability of any information presented on these sites. Use at your own discretion. If you spot an error, we appreciate you letting us know so it can be corrected.</p>
